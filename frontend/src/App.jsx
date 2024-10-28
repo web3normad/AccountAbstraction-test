@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ConnectButton, useSendTransaction } from "thirdweb/react";
 import { createThirdwebClient } from "thirdweb";
 import { prepareContractCall } from "thirdweb";
+import { sepolia } from "thirdweb/chains";
 import { utils } from "ethers";
 import accountAbstractionABI from "../abi.json";
 
@@ -28,11 +29,13 @@ function App() {
       const contract = {
         address: accountAbstractionAddress,
         abi: accountAbstractionABI,
+        chain: sepolia
       };
 
       const call = {
         contract,
         method: "execute",
+        // chain: sepolia,
         params: [
           "0xB37D3f4815ba9ca3e2872e8867902E156aCD7E65",
           utils.parseEther("0.01").toString(),
